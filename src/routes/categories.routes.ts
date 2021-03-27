@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { CategoriesRepository } from "../repositories/CategoriesRepository";
-import { Category } from "../model/category";
 
 const categoriesRoutes = Router();
 const categoriesRepository = new CategoriesRepository()
