@@ -9,12 +9,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "csv-parser": "^3.0.0",
     "express": "^4.17.1",
+    "multer": "^1.4.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.20",
+    "@types/multer": "^1.4.5",
     "@types/swagger-ui-express": "^4.1.2",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
