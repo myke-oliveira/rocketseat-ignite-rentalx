@@ -1,7 +1,8 @@
 import faker from "faker/locale/pt_BR";
 
-import { AppError } from "../../../../errors/AppError";
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
+import { AppError } from "@errors/AppError";
+import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
+
 import { UserRepository } from "../../repositories/in-memory/UserRepository";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
