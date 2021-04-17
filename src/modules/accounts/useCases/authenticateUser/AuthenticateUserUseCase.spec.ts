@@ -56,7 +56,7 @@ describe("Authenticate User", () => {
     await createUserUseCase.execute(user);
 
     expect(async () => {
-      authenticateUserUseCase.execute({
+      await authenticateUserUseCase.execute({
         email: user.email,
         password: "1235",
       });
