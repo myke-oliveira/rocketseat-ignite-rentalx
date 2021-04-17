@@ -1,9 +1,10 @@
 import { AppError } from "../../../../errors/AppError";
+import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 import { CategoriesRepository } from "../../repositories/in-memory/CategoriesRepository";
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
 let createCategoryUseCase: CreateCategoryUseCase;
-let categoryRepository: CategoriesRepository;
+let categoryRepository: ICategoriesRepository;
 
 describe("Create category", () => {
   beforeAll(() => {
