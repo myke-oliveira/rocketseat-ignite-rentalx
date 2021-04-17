@@ -22,7 +22,6 @@ class CreateSpecificationUseCase {
     );
 
     if (specificationAlreadyExists) {
-      console.log("Especificação existe.");
       throw new AppError("Specification already exists");
     }
 
