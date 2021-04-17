@@ -3,20 +3,20 @@ import faker from "faker/locale/pt_BR";
 import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
 import { AppError } from "@shared/errors/AppError";
 
-import { UserRepository } from "../../repositories/in-memory/UserRepository";
+import { UsersRepository } from "../../repositories/in-memory/UsersRepository";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 
 let authenticateUserUseCase: AuthenticateUserUseCase;
 let createUserUseCase: CreateUserUseCase;
-let userRepository: IUsersRepository;
+let usersRepository: IUsersRepository;
 
 describe("Authenticate User", () => {
   beforeAll(() => {
-    userRepository = new UserRepository();
-    createUserUseCase = new CreateUserUseCase(userRepository);
-    authenticateUserUseCase = new AuthenticateUserUseCase(userRepository);
+    usersRepository = new UsersRepository();
+    createUserUseCase = new CreateUserUseCase(usersRepository);
+    authenticateUserUseCase = new AuthenticateUserUseCase(usersRepository);
   });
   it("should be able to authenticate an user", async () => {
     const user: ICreateUserDTO = {
