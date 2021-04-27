@@ -3,7 +3,8 @@ import { getRepository, Repository } from "typeorm";
 import {
   ICreateCategoryDTO,
   ICategoriesRepository,
-} from "../../../repositories/ICategoriesRepository";
+} from "@modules/cars/repositories/ICategoriesRepository";
+
 import { Category } from "../Category";
 
 class CategoriesRepository implements ICategoriesRepository {
