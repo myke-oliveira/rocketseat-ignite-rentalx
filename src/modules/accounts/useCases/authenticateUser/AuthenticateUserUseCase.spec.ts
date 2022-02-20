@@ -23,7 +23,7 @@ describe("Authenticate User", () => {
       name: faker.name.findName(),
       email: faker.internet.email(),
       password: "1234",
-      driver_licence: faker.datatype.number().toString(),
+      driver_license: faker.datatype.number().toString(),
     };
 
     await createUserUseCase.execute(user);
@@ -50,7 +50,7 @@ describe("Authenticate User", () => {
       name: faker.name.findName(),
       email: faker.internet.email(),
       password: "1234",
-      driver_licence: faker.datatype.number().toString(),
+      driver_license: faker.datatype.number().toString(),
     };
 
     await createUserUseCase.execute(user);

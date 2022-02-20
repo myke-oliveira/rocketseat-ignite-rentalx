@@ -10,7 +10,7 @@ class UsersRepository implements IUsersRepository {
     name,
     email,
     password,
-    driver_licence,
+    driver_license,
   }: ICreateUserDTO): Promise<void> {
     const user = new User();
 
@@ -18,7 +18,7 @@ class UsersRepository implements IUsersRepository {
       name,
       email,
       password,
-      driver_licence,
+      driver_license,
     });
 
     this.users.push(user);
