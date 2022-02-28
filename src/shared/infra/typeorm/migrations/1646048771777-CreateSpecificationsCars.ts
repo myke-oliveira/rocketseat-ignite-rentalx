@@ -1,29 +1,36 @@
-import { MigrationInterface, QueryRunner, TableForeignKey } from "typeorm";
+import {
+  MigrationInterface,
+  QueryRunner,
+  TableForeignKey,
+  Table,
+} from "typeorm";
 
 export class CreateSpecificationsCars1646048771777
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.createTable({
-      name: "specifications_car",
-      columns: [
-        {
-          name: "car_id",
-          type: "uuid",
-        },
-        {
-          name: "specification_id",
-          type: "uuid",
-        },
-        {
-          name: "created_at",
-          type: "timestamp",
-          default: "now()",
-        },
-      ],
-    });
+    await queryRunner.createTable(
+      new Table({
+        name: "specifications_cars",
+        columns: [
+          {
+            name: "car_id",
+            type: "uuid",
+          },
+          {
+            name: "specification_id",
+            type: "uuid",
+          },
+          {
+            name: "created_at",
+            type: "timestamp",
+            default: "now()",
+          },
+        ],
+      })
+    );
 
     await queryRunner.createForeignKey(
-      "specification_cars",
+      "specifications_cars",
       new TableForeignKey({
         name: "FKSpecificationCar",
         referencedTableName: "specifications",
@@ -35,10 +42,10 @@ export class CreateSpecificationsCars1646048771777
     );
 
     await queryRunner.createForeignKey(
-      "specification_cars",
+      "specifications_cars",
       new TableForeignKey({
         name: "FKCarSpecification",
-        referencedTableName: "car",
+        referencedTableName: "cars",
         referencedColumnNames: ["id"],
         columnNames: ["car_id"],
         onDelete: "SET NULL",
@@ -49,11 +56,11 @@ export class CreateSpecificationsCars1646048771777
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey(
-      "specification_cars",
+      "specifications_cars",
       "FKCarSpecification"
     );
     await queryRunner.dropForeignKey(
-      "specification_cars",
+      "specifications_cars",
       "FKSpecificationCar"
     );
     await queryRunner.dropTable("specifications_car");
