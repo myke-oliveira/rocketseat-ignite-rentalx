@@ -1,6 +1,7 @@
 import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
 import { AppError } from "@shared/errors/AppError";
 
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
@@ -18,7 +19,7 @@ class CreateUserUseCase {
     email,
     password,
     driver_license,
-  }: ICreateUserDTO): Promise<User> {
+  }: ICreateUserDTO): Promise<Omit<User, "password">> {
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
     if (userAlreadyExists) {

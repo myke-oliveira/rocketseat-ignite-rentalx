@@ -2,6 +2,7 @@ import { getRepository, Repository } from "typeorm";
 
 import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
+import { CreateUserController } from "@modules/accounts/useCases/createUser/CreateUserController";
 
 import { User } from "../entities/User";
 
@@ -19,7 +20,7 @@ class UsersRepository implements IUsersRepository {
     driver_license,
     id,
     avatar,
-  }: ICreateUserDTO): Promise<User> {
+  }: ICreateUserDTO): Promise<Omit<User, "password">> {
     const user = this.repository.create({
       name,
       email,
@@ -29,7 +30,11 @@ class UsersRepository implements IUsersRepository {
       avatar,
     });
 
-    return this.repository.save(user);
+    const createdUser = await this.repository.save(user);
+
+    delete createdUser.password;
+
+    return createdUser;
   }
 
   async findByEmail(email: string): Promise<User> {

@@ -11,7 +11,7 @@ class UsersRepository implements IUsersRepository {
     email,
     password,
     driver_license,
-  }: ICreateUserDTO): Promise<User> {
+  }: ICreateUserDTO): Promise<Omit<User, "password">> {
     const user = new User();
 
     Object.assign(user, {
@@ -22,6 +22,8 @@ class UsersRepository implements IUsersRepository {
     });
 
     this.users.push(user);
+
+    delete user.password;
 
     return user;
   }
