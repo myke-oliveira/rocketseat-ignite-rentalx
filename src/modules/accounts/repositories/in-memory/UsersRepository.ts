@@ -23,9 +23,10 @@ class UsersRepository implements IUsersRepository {
 
     this.users.push(user);
 
-    delete user.password;
+    const userInfo = { ...user };
+    delete userInfo.password;
 
-    return user;
+    return userInfo;
   }
   async findByEmail(email: string): Promise<User> {
     const user = this.users.find((user) => user.email === email);
