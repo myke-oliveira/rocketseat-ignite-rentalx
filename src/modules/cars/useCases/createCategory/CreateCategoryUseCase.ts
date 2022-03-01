@@ -30,7 +30,7 @@ class CreateCategoryUseCase {
       name,
       description,
     });
-    console.log(category);
+
     return category;
   }
 }
